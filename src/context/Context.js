@@ -5,6 +5,7 @@ export const ProductContext = createContext();
 
 const Context = ({ children }) => {
   const [gallery, setGallery] = useState([]);
+  const [titleImg, setTitleImg] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState({});
 
@@ -15,16 +16,17 @@ const Context = ({ children }) => {
       .then(res => res.json())
       .then(data => {
         setGallery(data.gallery.map(img => img.url));
+        setTitleImg(data.image);
         setTitle(data.title);
         setPrice(data.price);
       });
   }, []);
 
-  console.log(gallery, title, price);
+  //   console.log(gallery, title, price);
 
   return (
     <ProductContext.Provider
-      value={{ gallery, title, setTitle, price, setPrice }}
+      value={{ gallery, titleImg, title, setTitle, price, setPrice }}
     >
       {children}
     </ProductContext.Provider>
