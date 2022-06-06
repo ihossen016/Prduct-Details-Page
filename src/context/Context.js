@@ -19,6 +19,7 @@ const Context = ({ children }) => {
         setTitleImg(data.image);
         setTitle(data.title);
         setPrice(data.price);
+        console.log(data);
       });
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { ProductContext } from "../context/Context";
 
 const Gallery = () => {
@@ -17,7 +17,9 @@ const Gallery = () => {
               key={index}
               src={img}
               alt="Shoe"
-              style={{ border: selectedImg === img ? "4px solid gray" : "" }}
+              style={{
+                border: selectedImg === img ? "4px solid #4a4e69" : "",
+              }}
               onClick={() => setSelectedImg(img)}
             />
           ))}
