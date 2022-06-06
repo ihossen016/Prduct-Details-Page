@@ -1,28 +1,34 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../context/Context";
 
 const Gallery = () => {
-  const { gallery, titleImg } = useContext(ProductContext);
-  const [selectedImg, setSelectedImg] = useState(titleImg);
+  const { productDetails, selectedImg, setSelectedImg } =
+    useContext(ProductContext);
+
+  // Rendering Selected Img after data is available
+  useEffect(() => {
+    setSelectedImg(productDetails && productDetails.image);
+  }, [productDetails]);
 
   return (
     <div className="gallery">
       <div className="container">
         <div className="selected">
-          <img src={selectedImg} alt="Selected Shoe" />
+          {productDetails && <img src={selectedImg} alt="Selected Shoe" />}
         </div>
         <div className="imgContainer">
-          {gallery.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt="Shoe"
-              style={{
-                border: selectedImg === img ? "4px solid #4a4e69" : "",
-              }}
-              onClick={() => setSelectedImg(img)}
-            />
-          ))}
+          {productDetails &&
+            productDetails.gallery.map((item, index) => (
+              <img
+                key={index}
+                src={item.url}
+                alt="Shoe"
+                style={{
+                  border: selectedImg === item.url ? "4px solid orange" : "",
+                }}
+                onClick={() => setSelectedImg(item.url)}
+              />
+            ))}
         </div>
       </div>
     </div>
