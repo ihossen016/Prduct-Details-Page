@@ -73,6 +73,7 @@ body {
 .product-info h4 span {
   text-decoration: line-through;
   font-size: 20px;
+  padding-left: 15px;
   color: gray;
 }
 .product-info h4 small {
