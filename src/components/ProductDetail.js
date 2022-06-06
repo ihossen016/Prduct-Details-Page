@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../context/Context";
 
 const ProductDetail = () => {
-  const { productDetails } = useContext(ProductContext);
+  const { productDetails, setSelectedImg } = useContext(ProductContext);
 
   const [discountedPrice, setDiscountedPrice] = useState();
   const [oldPrice, setOldPrice] = useState();
@@ -57,7 +57,10 @@ const ProductDetail = () => {
                   style={{
                     border: colorName === color.name ? "3px solid orange" : "",
                   }}
-                  onClick={() => setColorName(color.name)}
+                  onClick={() => {
+                    setColorName(color.name);
+                    setSelectedImg(color.image);
+                  }}
                 />
               ))}
           </div>
