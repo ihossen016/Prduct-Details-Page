@@ -8,6 +8,8 @@ const Context = ({ children }) => {
   const [titleImg, setTitleImg] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState({});
+  const [props, setProps] = useState([]);
+  const [skus, setSkus] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -19,6 +21,8 @@ const Context = ({ children }) => {
         setTitleImg(data.image);
         setTitle(data.title);
         setPrice(data.price);
+        setProps(data.variation.props);
+        setSkus(data.variation.skus);
         console.log(data);
       });
   }, []);
@@ -27,7 +31,16 @@ const Context = ({ children }) => {
 
   return (
     <ProductContext.Provider
-      value={{ gallery, titleImg, title, setTitle, price, setPrice }}
+      value={{
+        gallery,
+        titleImg,
+        title,
+        setTitle,
+        price,
+        setPrice,
+        props,
+        skus,
+      }}
     >
       {children}
     </ProductContext.Provider>
