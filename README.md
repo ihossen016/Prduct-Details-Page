@@ -7,3 +7,4 @@
 run the script `npm i` in the project directory to install all the required packages
 
 ## Project Screenshot
+![ss](https://github.com/ihossen016/Prduct-Details-Page/blob/main/public/ss.png)
