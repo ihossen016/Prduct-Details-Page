@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ProductContext } from "../context/Context";
 
 const Gallery = () => {
@@ -8,7 +8,7 @@ const Gallery = () => {
   // Rendering Selected Img after data is available
   useEffect(() => {
     setSelectedImg(productDetails && productDetails.image);
-  }, [productDetails]);
+  }, [productDetails, setSelectedImg]);
 
   return (
     <div className="gallery">
